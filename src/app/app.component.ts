@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MediaalunosComponent } from "./alunos/componentes/mediaalunos/mediaalunos.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [MediaalunosComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
