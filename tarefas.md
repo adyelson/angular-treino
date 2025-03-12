@@ -1,3 +1,18 @@
+# Tarefas pessoais
+
+
+- [X] **Teste:** Testar o que já foi feito
+- [-] **Aluno:** Usar model Aluno
+- [ ] **Separar Formulário:** Utilizar @Input @Output
+- [ ] **Usar Modal:** Usar modal do boostrap para mostrar formulario
+- [ ] **Restruturar:** Ajusatar condicionais existente para novo cenário
+- [ ] **Testes de tudo:** Criar testes
+- [ ] **API:** Criar API em json server
+- [ ] **Testes API:** Testes para API
+- [ ] **VER se vale a peconectar direto no BD:** Se sim conectar na BDS diretamente
+- [ ] **Testes BD:** Criar testes
+
+
 # Projeto final para obter o certificado
 
 Parabéns pela sua dedicação, isso significa que você acompanhou o curso e quer testar seus conhecimentos de Angular e receber o certificado:

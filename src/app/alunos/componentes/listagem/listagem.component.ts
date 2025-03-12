@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Aluno } from '../../models/aluno';
 
 @Component({
   selector: 'app-listagem',
@@ -16,10 +17,10 @@ import {
   styleUrl: './listagem.component.css',
 })
 export class ListagemComponent {
-
-  emEdicao= false;
+  arquivoDuplicado: Aluno[] = [];
+  emEdicao = false;
   indice: number = -1;
-  alunos: any[] = [
+  alunos: Aluno[] = [
     { nome: 'João', nota1: 7, nota2: 8 },
     { nome: 'Maria', nota1: 8, nota2: 9 },
     { nome: 'José', nota1: 5, nota2: 6 },
@@ -49,8 +50,11 @@ export class ListagemComponent {
     if (this.emEdicao) {
       this.alunos[this.indice] = this.form.value;
       this.emEdicao = false;
-    } else{
+    } else if (!this.checkDuplicate()) {
       this.alunos.push(this.form.value);
+    } else {
+      alert('Aluno já cadastrado');
+      return;
     }
     this.form.reset();
   }
@@ -69,6 +73,15 @@ export class ListagemComponent {
     this.form.reset();
     this.emEdicao = false;
     this.indice = -1;
+  }
 
+  checkDuplicate() {
+    this.arquivoDuplicado = this.alunos.filter(
+      (item) => item.nome.toLowerCase() === this.form.value.nome.toLowerCase()
+    );
+    if (this.arquivoDuplicado.length > 0) {
+      return true;
     }
+    return false;
+  }
 }
