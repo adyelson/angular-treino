@@ -1,87 +1,4 @@
-<form [formGroup]="form">
-  <div class="form">
-    <div class="form-group col-5">
-      <label for="nome">Nome</label>
-      <input
-        type="text"
-        class="form-control"
-        id="nome"
-        formControlName="nome"
-      />
-      <p
-        class="text-danger"
-        *ngIf="
-          form.get('nome')?.hasError('required') && form.get('nome')?.touched
-        "
-      >
-        Nome é obrigatório
-      </p>
-      <p class="text-danger" *ngIf="form.get('nome')?.hasError('minlength')">
-        Nome deve ter no mínimo 3 caracteres
-      </p>
-      <p class="text-danger" *ngIf="form.get('nome')?.hasError('maxlength')">
-        Nome deve ter no máximo 60 caracteres
-      </p>
-    </div>
-      <div class="form-group col-md-5">
-        <label for="nota1">Nota 1</label>
-        <input
-        type="number"
-        min="0"
-        max="10"
-        class="form-control"
-        id="nota1"
-        formControlName="nota1"
-      />
-      <p
-        class="text-danger"
-        *ngIf="
-          form.get('nota1')?.hasError('required') && form.get('nota1')?.touched
-        "
-      >
-        Nota 1 é obrigatória
-      </p>
-      <p class="text-danger" *ngIf="form.get('nota1')?.hasError('min')">
-        Nota deve ser maior que 0
-      </p>
-      <p class="text-danger" *ngIf="form.get('nota1')?.hasError('max')">
-        Nota deve ser menor que 10
-      </p>
-    </div>
-    <div class="form-group col-md-5">
-      <label for="nota2">Nota 2</label>
-      <input
-        type="number"
-        min="0"
-        max="10"
-        class="form-control"
-        id="nota2"
-        formControlName="nota2"
-        />
-        <p
-        class="text-danger"
-        *ngIf="
-          form.get('nota2')?.hasError('required') && form.get('nota2')?.touched
-          "
-      >
-        Nota 2 é obrigatória
-      </p>
-      <p class="text-danger" *ngIf="form.get('nota2')?.hasError('min')">
-        Nota deve ser maior que 0
-      </p>
-      <p class="text-danger" *ngIf="form.get('nota2')?.hasError('max')">
-        Nota deve ser menor que 10
-      </p>
-    </div>
-  </div>
 
-  <button type="submit" class="btn btn-primary mb-4 mt-3" (click)="salvar()">
-    {{ !emEdicao  ? 'Cadastrar' : 'Atualizar' }}
-  </button>
-  <button *ngIf="emEdicao" type="button" class="btn btn-secondary mb-4 ms-2 mt-3" (click)="cancelar()">
-    Cancelar
-  </button>
-</form>
 
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
@@ -100,9 +17,10 @@
       <td>{{ aluno.nome }}</td>
       <td>{{ aluno.nota1 }}</td>
       <td>{{ aluno.nota2 }}</td>
-      <td>{{ aluno | media }}</td>
+      <td style="font-weight: 600;"[ngStyle]="{color: (aluno.nota1+aluno.nota2)/2<7 ? ' red' : 'green'}">{{ aluno | media | number: '1.0-2'}}</td>
       <td>
-        <button class="actions btn btn-primary btn-sm" (click)="editar(indice)" [disabled]="emEdicao">
+        <button class="actions btn btn-primary btn-sm"   data-bs-toggle="modal"
+        data-bs-target="#modalFormulario" (click)="editar(indice)" [disabled]="emEdicao">
           Editar
         </button>
         <button class="actions btn btn-danger btn-sm" (click)="excluir(indice)" [disabled]="emEdicao">

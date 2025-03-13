@@ -2,10 +2,10 @@
 
 
 - [X] **Teste:** Testar o que já foi feito
-- [-] **Aluno:** Usar model Aluno
-- [ ] **Separar Formulário:** Utilizar @Input @Output
-- [ ] **Usar Modal:** Usar modal do boostrap para mostrar formulario
-- [ ] **Restruturar:** Ajusatar condicionais existente para novo cenário
+- [X] **Aluno:** Usar model Aluno
+- [X] **Separar Formulário:** Utilizar @Input @Output
+- [X] **Usar Modal:** Usar modal do boostrap para mostrar formulario
+- [X] **Restruturar:** Ajusatar condicionais existente para novo cenário
 - [ ] **Testes de tudo:** Criar testes
 - [ ] **API:** Criar API em json server
 - [ ] **Testes API:** Testes para API

@@ -1,1 +1,140 @@
-<button class="actions btn btn-primary btn-sm">Adicionar</button>
+<!-- Button -->
+<button
+  type="button"
+  class="actions btn btn-primary btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#modalFormulario"
+>
+  Adicionar novo
+</button>
+
+<!-- Modal -->
+<div
+  (hidden.bs.modal)="cancelar()"
+  class="modal fade"
+  id="modalFormulario"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Adicionar novo aluno
+        </h5>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário -->
+        <form [formGroup]="form">
+          <div class="form">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                formControlName="nome"
+              />
+              <p
+                class="text-danger"
+                *ngIf="
+                  form.get('nome')?.hasError('required') &&
+                  form.get('nome')?.touched
+                "
+              >
+                Nome é obrigatório
+              </p>
+              <p
+                class="text-danger"
+                *ngIf="form.get('nome')?.hasError('minlength')"
+              >
+                Nome deve ter no mínimo 3 caracteres
+              </p>
+              <p
+                class="text-danger"
+                *ngIf="form.get('nome')?.hasError('maxlength')"
+              >
+                Nome deve ter no máximo 60 caracteres
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="nota1">Nota 1</label>
+              <input
+                type="number"
+                min="0"
+                max="10"
+                class="form-control"
+                id="nota1"
+                formControlName="nota1"
+              />
+              <p
+                class="text-danger"
+                *ngIf="
+                  form.get('nota1')?.hasError('required') &&
+                  form.get('nota1')?.touched
+                "
+              >
+                Nota 1 é obrigatória
+              </p>
+              <p class="text-danger" *ngIf="form.get('nota1')?.hasError('min')">
+                Nota deve ser maior que 0
+              </p>
+              <p class="text-danger" *ngIf="form.get('nota1')?.hasError('max')">
+                Nota deve ser menor que 10
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="nota2">Nota 2</label>
+              <input
+                type="number"
+                min="0"
+                max="10"
+                class="form-control"
+                id="nota2"
+                formControlName="nota2"
+              />
+              <p
+                class="text-danger"
+                *ngIf="
+                  form.get('nota2')?.hasError('required') &&
+                  form.get('nota2')?.touched
+                "
+              >
+                Nota 2 é obrigatória
+              </p>
+              <p class="text-danger" *ngIf="form.get('nota2')?.hasError('min')">
+                Nota deve ser maior que 0
+              </p>
+              <p class="text-danger" *ngIf="form.get('nota2')?.hasError('max')">
+                Nota deve ser menor que 10
+              </p>
+            </div>
+          </div>
+        </form>
+        <!-- Formulário -->
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalFormulario"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          data-bs-dismiss="modal"
+          (click)="salvar()"
+        >
+          {{ !emEdicao ? "Cadastrar" : "Atualizar" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

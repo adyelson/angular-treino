@@ -1,2 +1,12 @@
-<!-- <app-formulario></app-formulario> -->
-<app-listagem></app-listagem>
+<app-formulario
+  [form]="form"
+  [emEdicao]="emEdicao"
+  (alunoAdicionado)="salvar($event)"
+  (cancelarEdicao)="cancelar()"
+></app-formulario>
+<app-listagem
+  [alunos]="alunos"
+  [emEdicao]="emEdicao"
+  (alunoRemovido)="excluir($event)"
+  (alunoEditado)="editar($event)"
+></app-listagem>
