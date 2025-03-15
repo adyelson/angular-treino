@@ -40,3 +40,19 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Cache do Angular CLI
+.angular/
+.angular/cache
+
+# Configurações do VSCode (podem ser específicas do usuário)
+.vscode/
+
+# Cobertura de testes gerada pelo Jest/Karma
+coverage/
+
+# Dependências do projeto (baixadas via npm/yarn)
+node_modules/
+
+# Arquivos de build e estáticos que podem ser regenerados
+public/
