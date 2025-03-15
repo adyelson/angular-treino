@@ -1,4 +1,11 @@
+# Branches
+
+main
+apitests
+
+
 # Tarefas pessoais
+
 
 -- branch normal - netlify [ ] Funciona?
 - [X] **Teste:** Testar o que já foi feito
