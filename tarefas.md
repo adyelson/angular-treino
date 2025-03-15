@@ -1,16 +1,24 @@
 # Tarefas pessoais
 
-
+-- branch normal - netlify [ ] Funciona?
 - [X] **Teste:** Testar o que já foi feito
 - [X] **Aluno:** Usar model Aluno
 - [X] **Separar Formulário:** Utilizar @Input @Output
 - [X] **Usar Modal:** Usar modal do boostrap para mostrar formulario
-- [X] **Restruturar:** Ajusatar condicionais existente para novo cenário
-- [ ] **Testes de tudo:** Criar testes
-- [ ] **API:** Criar API em json server
-- [ ] **Testes API:** Testes para API
-- [ ] **VER se vale a peconectar direto no BD:** Se sim conectar na BDS diretamente
-- [ ] **Testes BD:** Criar testes
+- [X] **Restruturar:** Ajustar condicionais existente para novo cenário
+- [X] **Testes de tudo:** Criar testes
+- [ ] **Rotas:** Criar páginas
+- [ ] **Rotas:** Criar rotas
+- [ ] **Netlify:** Fazer rodar online
+
+
+--- outras branches 
+
+- [X] **API:** Criar API em json server (branch apitests)
+- [ ] **Testes API:** Atualizar Testes para API (branch apitests)
+
+- [ ] **VER se vale a peconectar direto no BD:** Se sim conectar na BDS diretamente  (branch bancodedados)
+- [ ] **Testes BD:** Criar testes (branch bancodedados)
 
 
 # Projeto final para obter o certificado
