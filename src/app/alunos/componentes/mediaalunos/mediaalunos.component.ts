@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormularioComponent } from "../formulario/formulario.component";
 import { ListagemComponent } from '../listagem/listagem.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Aluno } from '../../models/aluno';
+import { AlunosService } from '../../services/alunos.service';
 
 @Component({
   selector: 'app-mediaalunos',
@@ -11,20 +12,15 @@ import { Aluno } from '../../models/aluno';
   templateUrl: './mediaalunos.component.html',
   styleUrl: './mediaalunos.component.css'
 })
-export class MediaalunosComponent {
+export class MediaalunosComponent implements OnInit {
 
   arquivoDuplicado: Aluno[] = [];
   emEdicao = false;
   indice: number = -1;
-  alunos: Aluno[] = [
-    { nome: 'João', nota1: 7, nota2: 8 },
-    { nome: 'Maria', nota1: 8, nota2: 9 },
-    { nome: 'José', nota1: 5, nota2: 6 },
-    { nome: 'Pedro', nota1: 3, nota2: 4 },
-    { nome: 'Paulo', nota1: 9, nota2: 10 },
-  ];
+  alunos: Aluno[] = [];
 
   form: FormGroup = new FormGroup({
+    id: new FormControl(''),
     nome: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -42,42 +38,67 @@ export class MediaalunosComponent {
     ]),
   });
 
+
+  constructor(private alunoService: AlunosService) { }
+
+  ngOnInit(): void {
+    this.refresh();
+  }
+
+
+
+  //métodos
+
+  refresh() {
+    this.alunoService.getAlunos().subscribe(data => {
+      this.alunos = data;
+    });
+  }
+
   salvar(aluno: Aluno) {
     if (this.emEdicao) {
-      this.alunos[this.indice] = aluno;
+      this.alunoService.updateAluno(aluno).subscribe(() => {
+        this.refresh();
+      });
       this.emEdicao = false;
     } else if (!this.checkDuplicate()) {
-      this.alunos.push(aluno);
+      // Remova o ID para evitar problemas no JSON Server
+      const { id, ...alunoSemId } = aluno;
+      this.alunoService.addAluno(alunoSemId).subscribe(() => {
+        this.refresh();
+      });
     } else {
       alert('Aluno já cadastrado');
       return;
     }
+
     this.form.reset();
   }
 
-  excluir(indice: number) {
-    this.alunos.splice(indice, 1);
+  excluir(aluno: Aluno) {
+    this.alunoService.deleteAluno(aluno).subscribe(() => {
+      this.refresh();
+    });
   }
 
-  editar(indice: number) {
-    this.form.setValue(this.alunos[indice]);
-    this.indice = indice;
+  editar(aluno: Aluno) {
     this.emEdicao = true;
+    this.alunoService.getAluno(aluno).subscribe(
+      data => {
+        this.form.setValue(data);
+        this.refresh();
+      }
+    );
   }
 
   cancelar() {
     this.form.reset();
     this.emEdicao = false;
-    this.indice = -1;
+
   }
 
   checkDuplicate() {
-    this.arquivoDuplicado = this.alunos.filter(
-      (item) => item.nome.toLowerCase() === this.form.value.nome.toLowerCase()
-    );
-    if (this.arquivoDuplicado.length > 0) {
-      return true;
-    }
-    return false;
+    const nome = this.form.value.nome?.trim().toLowerCase();
+    return this.alunos.some(aluno => aluno.nome.toLowerCase() === nome);
   }
 }

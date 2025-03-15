@@ -54,5 +54,5 @@ coverage/
 # Dependências do projeto (baixadas via npm/yarn)
 node_modules/
 
-# Arquivos de build e estáticos que podem ser regenerados
-public/
+# # Arquivos de build e estáticos que podem ser regenerados
+# public/

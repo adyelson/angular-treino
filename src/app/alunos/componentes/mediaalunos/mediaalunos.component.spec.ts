@@ -121,7 +121,7 @@ describe('MediaalunosComponent', () => {
     const formularioDebug = fixture.debugElement.query(By.directive(FormularioComponent));
     const formularioComponent = formularioDebug.componentInstance as FormularioComponent;
 
-    const alunoMock: Aluno = { nome: 'Teste', nota1: 9, nota2: 10 };
+    const alunoMock: Aluno = { id:10, nome: 'Teste', nota1: 9, nota2: 10 };
 
     formularioComponent.alunoAdicionado.emit(alunoMock);
     fixture.detectChanges();

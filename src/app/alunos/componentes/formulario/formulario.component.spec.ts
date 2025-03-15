@@ -48,10 +48,10 @@ describe('FormularioComponent', () => {
   it('should emit alunoAdicionado when salvar() is called', () => {
     spyOn(component.alunoAdicionado, 'emit');
 
-    component.form.setValue({ nome: 'Teste', nota1: 8, nota2: 7 });
+    component.form.setValue({ id:10, nome: 'Teste', nota1: 8, nota2: 7 });
     component.salvar();
 
-    expect(component.alunoAdicionado.emit).toHaveBeenCalledWith({ nome: 'Teste', nota1: 8, nota2: 7 });
+    expect(component.alunoAdicionado.emit).toHaveBeenCalledWith({id:10, nome: 'Teste', nota1: 8, nota2: 7 });
   });
 
   it('should emit cancelarEdicao when cancelar() is called', () => {

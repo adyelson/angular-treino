@@ -38,9 +38,9 @@ describe('ListagemComponent', () => {
 
   it('should render the correct number of rows in the table', () => {
     component.alunos = [
-      { nome: 'Aluno 1', nota1: 8, nota2: 7 },
-      { nome: 'Aluno 2', nota1: 6, nota2: 9 },
-      { nome: 'Aluno 3', nota1: 6, nota2: 9 },
+      {id:10, nome: 'Aluno 1', nota1: 8, nota2: 7 },
+      {id:11, nome: 'Aluno 2', nota1: 6, nota2: 9 },
+      {id:12, nome: 'Aluno 3', nota1: 6, nota2: 9 },
     ];
     fixture.detectChanges();
 
@@ -49,7 +49,7 @@ describe('ListagemComponent', () => {
   });
 
   it('should render correct student data in table', () => {
-    component.alunos = [{ nome: 'Aluno Teste', nota1: 9, nota2: 8 }];
+    component.alunos = [{ id:10, nome: 'Aluno Teste', nota1: 9, nota2: 8 }];
     fixture.detectChanges();
 
     const row = fixture.debugElement.query(By.css('tbody tr'));
@@ -61,7 +61,7 @@ describe('ListagemComponent', () => {
   });
 
   it('should disable buttons when emEdicao is true', () => {
-    component.alunos = [{ nome: 'Aluno Teste', nota1: 9, nota2: 8 }];
+    component.alunos = [{id:10, nome: 'Aluno Teste', nota1: 9, nota2: 8 }];
     component.emEdicao = true;
     fixture.detectChanges();
 

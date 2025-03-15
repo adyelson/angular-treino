@@ -19,15 +19,15 @@ import { Aluno } from '../../models/aluno';
 export class ListagemComponent {
   @Input() emEdicao: any;
   @Input() alunos: Aluno[] = [  ];
-  @Output() alunoRemovido = new EventEmitter<number>();
-  @Output() alunoEditado = new EventEmitter<number>();
+  @Output() alunoRemovido = new EventEmitter<Aluno>();
+  @Output() alunoEditado = new EventEmitter<Aluno>();
 
 
-  excluir(indice:number) {
-    this.alunoRemovido.emit(indice);
+  excluir(aluno: Aluno) {
+    this.alunoRemovido.emit(aluno);
   }
 
-  editar(indice:number) {
-    this.alunoEditado.emit(indice);
+  editar(aluno: Aluno) {
+    this.alunoEditado.emit(aluno);
   }
 }

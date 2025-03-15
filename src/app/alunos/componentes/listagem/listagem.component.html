@@ -13,17 +13,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let aluno of alunos; index as indice">
-      <td>{{ indice + 1 }}</td>
+      <td>{{ indice+1 }}</td>
       <td>{{ aluno.nome }}</td>
       <td>{{ aluno.nota1 }}</td>
       <td>{{ aluno.nota2 }}</td>
       <td style="font-weight: 600;"[ngStyle]="{color: (aluno.nota1+aluno.nota2)/2<7 ? ' red' : 'green'}">{{ aluno | media | number: '1.0-2'}}</td>
       <td>
         <button class="actions btn btn-primary btn-sm"   data-bs-toggle="modal"
-        data-bs-target="#modalFormulario" (click)="editar(indice)" [disabled]="emEdicao">
+        data-bs-target="#modalFormulario" (click)="editar(aluno)" [disabled]="emEdicao">
           Editar
         </button>
-        <button class="actions btn btn-danger btn-sm" (click)="excluir(indice)" [disabled]="emEdicao">
+        <button class="actions btn btn-danger btn-sm" (click)="excluir(aluno)" [disabled]="emEdicao">
           Excluir
         </button>
       </td>

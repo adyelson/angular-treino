@@ -30,6 +30,16 @@
         <form [formGroup]="form">
           <div class="form">
             <div class="form-group">
+              <label *ngIf="emEdicao" for="nome">Id</label>
+              <input
+                *ngIf="emEdicao"
+                type="text"
+                class="form-control bg-light"
+                id="id"
+                formControlName="id"
+                readonly
+              />
+
               <label for="nome">Nome</label>
               <input
                 type="text"
