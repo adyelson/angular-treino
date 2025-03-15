@@ -1,6 +1,6 @@
 # Branches
 
-main
+main - online
 apitests
 
 
@@ -14,9 +14,8 @@ apitests
 - [X] **Usar Modal:** Usar modal do boostrap para mostrar formulario
 - [X] **Restruturar:** Ajustar condicionais existente para novo cenário
 - [X] **Testes de tudo:** Criar testes
-- [ ] **Rotas:** Criar páginas
-- [ ] **Rotas:** Criar rotas
-- [ ] **Netlify:** Fazer rodar online
+- [X] **Rotas:** Criar rotas
+- [X] **Netlify:** Fazer rodar online
 
 
 --- outras branches 
